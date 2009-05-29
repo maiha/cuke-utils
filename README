@@ -31,5 +31,30 @@ Usage:
   lrwxrwxrwx 1 maiha maiha   41 May 30 02:18 latest.html -> /data/git/apps/weborder/tmp/webrat/9.html
 
 
+features/support/update_language.rb
+===================================
+  Update keywords of language.yml in runtime without affecting system catalogs
+
+Requirement:
+  -
+
+Prepare:
+  put update_language.rb into "features/support/" dir of your app
+
+Example:
+  Adding 'Premised' into Given keywords
+
+  % vi features/support/update_language.rb
+  ...
+  keywords = {
+    "given" => "Given|Premised",
+  }
+  Cucumber.update_language "en", keywords
+
+  # in your feature file
+  ...
+    Scenario Outline: Failed Login
+    Premised the user is ...
+
 
 Copyright (c) 2009 maiha@wota.jp, released under the MIT license
