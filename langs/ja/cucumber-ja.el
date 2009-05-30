@@ -35,7 +35,7 @@
    '("^ *Then" . font-lock-keyword-face)
    '("^ *And" . font-lock-keyword-face)
    '("^ *フィーチャ:" (0 font-lock-keyword-face) (".*" nil nil (0 font-lock-type-face t)))
-   '("^ *シナリオ\\(?:テンプレート\\|テンプレ\\)?:" (0 font-lock-keyword-face) (".*" nil nil (0 font-lock-function-name-face t)))
+   '("^ *シナリオ\\(?:アウトライン\\|テンプレート\\|テンプレ\\)?:" (0 font-lock-keyword-face) (".*" nil nil (0 font-lock-function-name-face t)))
    '("^ *前提" . font-lock-keyword-face)
    '("^ *もし" . font-lock-keyword-face)
    '("^ *実行" . font-lock-keyword-face)
