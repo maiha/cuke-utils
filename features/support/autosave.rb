@@ -14,23 +14,32 @@
 #   maiha <maiha@wota.jp>
 #
 
+require 'pathname'
+
 module AutoSaveVisitedPage
   def visit(*args)
-    returning(super) do
-      path = AutoSaveVisitedPage.auto_save_path
-      path.open("w+") {|f| f.print response_body}
-      auto_save_update_latest(path)
-    end
+    val = super
+    path = AutoSaveVisitedPage.auto_save_path
+    path.open("w+") {|f| f.print response_body}
+    auto_save_update_latest(path)
+    return val
   end
 
   def auto_save_update_latest(path)
     latest = auto_save_path(:latest)
     latest.unlink if latest.exist?
-    FileUtils.ln_s(path, latest)
+    Dir.chdir(path.parent) do
+      FileUtils.ln_s(path.basename, latest.basename)
+    end
+  end
+
+  def auto_save_base
+    Pathname(File.dirname(__FILE__)) + ".." + ".." + "tmp" + "webrat"
   end
 
   def auto_save_path(target = nil)
-    (base = Pathname(RAILS_ROOT) + "tmp" + "webrat").mkpath
+    base = auto_save_base.cleanpath
+    base.mkpath
     base +
       case target
       when :latest then "latest.html"
@@ -50,6 +59,7 @@ module AutoSaveVisitedPage
   end
 
   module_function :auto_save_path
+  module_function :auto_save_base
 end
 
 AutoSaveVisitedPage.init

@@ -9,7 +9,7 @@ features/support/autosave.rb
   A cucumber plugin to save visited page automatically
 
 Requirement:
-  Rails
+  -
 
 Prepare:
   put autosave.rb into "features/support/" dir of your rails application
@@ -28,7 +28,7 @@ Usage:
   -rw-r--r-- 1 maiha maiha 7122 May 30 02:18 7.html
   -rw-r--r-- 1 maiha maiha  496 May 30 02:18 8.html
   -rw-r--r-- 1 maiha maiha 9694 May 30 02:18 9.html
-  lrwxrwxrwx 1 maiha maiha   41 May 30 02:18 latest.html -> /data/git/apps/weborder/tmp/webrat/9.html
+  lrwxrwxrwx 1 maiha maiha   41 May 30 02:18 latest.html -> 9.html
 
 
 features/support/update_language.rb
