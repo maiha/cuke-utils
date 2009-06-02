@@ -18,9 +18,21 @@ require 'pathname'
 
 module AutoSaveVisitedPage
   def visit(*args)
-    val = super
+    super
     auto_save
-    return val
+    response
+  end
+
+  def click_button(*args)
+    super
+    auto_save
+    response
+  end
+
+  def click_link(*args)
+    super
+    auto_save
+    response
   end
 
   def auto_save
