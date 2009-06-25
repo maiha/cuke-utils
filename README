@@ -57,4 +57,29 @@ Example:
     Premised the user is ...
 
 
+features/support/disable_warning.rb
+============================
+  A cucumber plugin to disable warnings from HTML::Document in Rails
+
+Requirement:
+  Rails
+
+Prepare:
+  put this into "features/support/" dir of your rails application
+
+Example:
+  [before]
+    ignoring attempt to close th with div
+      opened at byte 5076, line 168
+      closed at byte 14544, line 415
+      attributes at open: {"class"=>"sa_order_detail_th", "align"=>"center"}
+      text around open: "   <tr>\n            <th class=\"sa_order_"
+      text around close: "v>\n      </div>\n    </div>\n  </body>\n</h"
+    ...
+    # repeated many times!
+
+  [after]
+    # nothing reported
+
+
 Copyright (c) 2009 maiha@wota.jp, released under the MIT license
